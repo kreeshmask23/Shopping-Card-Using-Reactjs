@@ -2,12 +2,12 @@
 import React, { useReducer } from 'react';
 import './App.css';
 
-// Define the initial state of the cart
+//step 01 Initialstate
 const initialState = {
   cart: [],
 };
 
-// Define the reducer function
+// step02 Create Reducer Function
 const cartReducer = (state, action) => {
   switch (action.type) {
     case 'ADD_ITEM':
@@ -49,11 +49,11 @@ const cartReducer = (state, action) => {
   }
 };
 
-// The main component
+// step03 Initialize the useReducer Hook
 const App = () => {
   const [state, dispatch] = useReducer(cartReducer, initialState);
   
-  // Sample item list to add to the cart with image URLs
+  
   const items = [
     { id: 1, name: 'Apple', price: 0.5, imageUrl: 'https://images.pexels.com/photos/209439/pexels-photo-209439.jpeg?auto=compress&cs=tinysrgb&w=600/200x200' },
     { id: 2, name: 'Banana', price: 0.3, imageUrl: 'https://images.pexels.com/photos/61127/pexels-photo-61127.jpeg?auto=compress&cs=tinysrgb&w=600/200x200' },
@@ -66,7 +66,7 @@ const App = () => {
     { id: 9, name: 'Broccoli', price: 0.8, imageUrl: 'https://images.pexels.com/photos/47347/broccoli-vegetable-food-healthy-47347.jpeg?auto=compress&cs=tinysrgb&w=600/200x200' },
   ];
 
-  // Add item to the cart
+  
   const addItemToCart = (item, quantity) => {
     dispatch({
       type: 'ADD_ITEM',
@@ -74,7 +74,7 @@ const App = () => {
     });
   };
 
-  // Update item quantity in the cart
+//step04 Dispatch actions
   const updateItemQuantity = (id, quantity) => {
     dispatch({
       type: 'UPDATE_ITEM_QUANTITY',
@@ -82,7 +82,7 @@ const App = () => {
     });
   };
 
-  // Remove item from the cart
+
   const removeItemFromCart = id => {
     dispatch({
       type: 'REMOVE_ITEM',
